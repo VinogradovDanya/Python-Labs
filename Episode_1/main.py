@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 f = open('005.dat', 'r')
 
