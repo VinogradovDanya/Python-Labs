@@ -16,7 +16,6 @@ w = 0.6
 
 dct1_new = defaultdict(list)
 dct2_new = defaultdict(list)
-listic = []
 
 for key in dct1:
     for i in range(11):
@@ -31,14 +30,13 @@ for key in dct2:
 print(dct1_new)
 print(dct2_new)
 
-
 for i in range(1, 11):
     rez1 = [dct1_new[key][i][1] for key in dct1_new]
-    print(rez1)
+    oldst = [sum(dct1_new[key][j] for j in range(i)) for key in dct1_new]
     rez2 = [dct2_new[key][i][1] for key in dct2_new]
-    print(rez2)
-    ax1[0].bar(list(dct1_new.keys()), rez1, w, bottom=rez1, label='%d' % i)
-    ax1[1].bar(list(dct2_new.keys()), rez2, w, bottom=rez2, label='%d' % i)
+    olddt = [sum(dct2_new[key][j] for j in range(i)) for key in dct2_new]
+    ax1[0].bar(list(dct1_new.keys()), rez1, w, bottom=oldst, label='%d' % i)
+    ax1[1].bar(list(dct2_new.keys()), rez2, w, bottom=olddt, label='%d' % i)
 
 
 ax1[0].set_title('Marks per prep')
@@ -46,4 +44,5 @@ plt.subplots_adjust(wspace=0.5, hspace=0.4)
 ax1[1].set_title('Marks per group')
 ax1[0].legend(loc='upper right', fontsize=10)
 ax1[1].legend(loc='upper right', fontsize=10)
+plt.savefig("res.png")
 plt.show()
