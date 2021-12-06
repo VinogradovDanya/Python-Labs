@@ -29,6 +29,7 @@ f.close()
 plt.plot(x, y, 'ro')
 plt.grid()
 plt.legend()
+plt.savefig("res5.png")
 plt.show()
 
 
