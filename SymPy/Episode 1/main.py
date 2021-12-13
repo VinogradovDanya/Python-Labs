@@ -2,7 +2,6 @@ import sympy as sym
 
 ro, lyambda, mu = sym.symbols('ro, l, m')
 matrix = sym.Matrix.zeros(9, 9)
-
 matrix[0, 3] = -1 / ro
 matrix[1, 4] = -1 / ro
 matrix[2, 5] = -1 / ro

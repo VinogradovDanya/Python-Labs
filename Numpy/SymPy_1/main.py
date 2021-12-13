@@ -1,24 +1,18 @@
-from math import exp
+import numpy as np
+import numpy.linalg as lin
 
 
-def s(x):
-    return 1 / (1 + exp(-x / 10))
 
+failic = open(input(), "r")
+n = int(failic.readline())
+k = []
 
-def main():
-    stud_levels = [int(i) for i in input().split()]
-    n = len(stud_levels)
-    task_levels = [int(i) for i in input().split()]
-    k = len(task_levels)
-    q = 0
-    for student in stud_levels:
-        m = 0
-        for task in task_levels:
-            m += s(student - task)
-        if m >= 0.5 * k:
-            q += 1
-    print(q)
+for i in range(2 * n):
+    k.append([float(i) for i in failic.readline().split()])
 
-
-if __name__ == "__main__":
-    main()
+k_1 = np.array(k)
+f_2 = np.array([float(i) for i in failic.readline().split()])
+tochno = np.dot(lin.inv(k_1), f_2)
+toch = tochno.tolist()[::2]
+ans = min(toch)
+print(-ans if ans < 0 else 0)
